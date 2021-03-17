@@ -27,8 +27,8 @@
 #define ALPHA_BLACK_LIGHT		0x44000000
 
 /**
- * Debug fonts
- */
+* Debug fonts
+*/
 #define DEBUG_FONT_DEBUG		0
 #define DEBUG_FONT_ACORN		1
 #define DEBUG_FONT_PERL			2
@@ -67,15 +67,15 @@ typedef struct img{
 class dbg{
 
 	private:
-	
+
 		//one only
 		dbg_ctx context;
 
 	public:
 	
 		/**
-		 * Open and map the framebuffer pointer and retreive screen info
-		 */
+		* Open and map the framebuffer pointer and retreive screen info
+		*/
 		int  init(){
 
 			//Open the framebuffer for reading and writing
@@ -115,59 +115,59 @@ class dbg{
 			return 1;
 		}
 		/**
-		 * Unmap and close the framebuffer pointer 
-		 */
+		* Unmap and close the framebuffer pointer 
+		*/
 		void shutdown(){
 			munmap(context.fbp, context.screensize);
 			close(context.fbfd);
 		}
 		/**
-		 * Clear screen with color
-		 * #define RED 						0xFFFF0000
-		 * #define GREEN 					0xFF00FF00
-		 * #define BLUE						0xFF0000FF
-		 * #define YELLOW 					0xFFFFFF00
-		 * #define PURPLE 					0xFFFF00FF
-		 * #define CYAN 					0xFF00FFFF
-		 * #define WHITE 					0xFFFFFFFF
-		 * #define GRAY 					0xFFCCCCCC
-		 * #define DARKGRAY 				0xFF888888
-		 * #define DARKERGRAY 				0xFF444444
-		 * #define BLACK 					0xFF000000
-		 * #define NOCOLOR 					0
-		 * #define ALPHA_RED 				0xCCFF0000
-		 * #define ALPHA_GREEN 				0xCC00FF00
-		 * #define ALPHA_BLUE				0xCC0000FF
-		 * #define ALPHA_BLACK 				0xCC000000
-		 * #define ALPHA_WHITE 				0xCCFFFFFF
-		 * #define ALPHA_GRAY 				0xCCCCCCCC
-		 * #define ALPHA_DARKGRAY 			0xCC888888
-		 * #define ALPHA_DARKERGRAY 		0xCC444444
-		 * #define ALPHA_BLACK 				0xCC000000
-		 * #define ALPHA_BLACK_MEDIUM 		0x88000000
-		 * #define ALPHA_BLACK_LIGHT		0x44000000
-		 */
+		* Clear screen with color
+		* #define RED 						0xFFFF0000
+		* #define GREEN 					0xFF00FF00
+		* #define BLUE						0xFF0000FF
+		* #define YELLOW 					0xFFFFFF00
+		* #define PURPLE 					0xFFFF00FF
+		* #define CYAN 						0xFF00FFFF
+		* #define WHITE 					0xFFFFFFFF
+		* #define GRAY 						0xFFCCCCCC
+		* #define DARKGRAY 					0xFF888888
+		* #define DARKERGRAY 				0xFF444444
+		* #define BLACK 					0xFF000000
+		* #define NOCOLOR 					0
+		* #define ALPHA_RED 				0xCCFF0000
+		* #define ALPHA_GREEN 				0xCC00FF00
+		* #define ALPHA_BLUE				0xCC0000FF
+		* #define ALPHA_BLACK 				0xCC000000
+		* #define ALPHA_WHITE 				0xCCFFFFFF
+		* #define ALPHA_GRAY 				0xCCCCCCCC
+		* #define ALPHA_DARKGRAY 			0xCC888888
+		* #define ALPHA_DARKERGRAY 			0xCC444444
+		* #define ALPHA_BLACK 				0xCC000000
+		* #define ALPHA_BLACK_MEDIUM 		0x88000000
+		* #define ALPHA_BLACK_LIGHT			0x44000000
+		*/
 		void clear(unsigned int color){
 			unsigned int i; for(i=0; i<context.vinfo.xres * context.vinfo.yres; i++) context.fbp[i] = color;
 		}
 		/**
-		 * Print (blit) a message to vram using debug fonts
-		 * msg - const u8 string
-		 * x - x offset
-		 * y - y offset
-		 * fg_col - foreground color
-		 * bg_col - background_color
-		 * selected_font - self explainitory
-		 * ... - vsnprintf tail's 
-		 * 
-		 * #define DEBUG_FONT_DEBUG			0
-		 * #define DEBUG_FONT_ACORN			1
-		 * #define DEBUG_FONT_PERL			2
-		 * #define DEBUG_FONT_SPARTA		3
-		 * #define DEBUG_FONT_LINUX			4
-		 * #define DEBUG_FONT_LUCIDIA		5
-		 * 
-		 */
+		* Print (blit) a message to vram using debug fonts
+		* msg - const u8 string
+		* x - x offset
+		* y - y offset
+		* fg_col - foreground color
+		* bg_col - background_color
+		* selected_font - self explainitory
+		* ... - vsnprintf tail's 
+		* 
+		* #define DEBUG_FONT_DEBUG			0
+		* #define DEBUG_FONT_ACORN			1
+		* #define DEBUG_FONT_PERL			2
+		* #define DEBUG_FONT_SPARTA			3
+		* #define DEBUG_FONT_LINUX			4
+		* #define DEBUG_FONT_LUCIDIA		5
+		* 
+		*/
 		void print(const char *msg, int x, int y, int fg_col, int bg_col, int selected_font, ...){
 
 			char buf[256];
@@ -202,8 +202,8 @@ class dbg{
 
 		}
 		/**
-		 * file - "/path/to/file"
-		 */
+		* file - "/path/to/file"
+		*/
 		img load_img(const char *file){
 
 			img a_img; //= (img*) malloc(sizeof(img));
@@ -239,10 +239,10 @@ class dbg{
 
 		}
 		/**
-		 * i - image
-		 * x - x offset
-		 * y - y offset
-		 */
+		* i - image
+		* x - x offset
+		* y - y offset
+		*/
 		void draw_img(img i, int x, int y){
 			
 			unsigned int pwidth	= (context.vinfo.xres*(context.vinfo.bits_per_pixel / 8));
@@ -260,8 +260,8 @@ class dbg{
 			
 		}
 		/**
-		 * i - image
-		 */
+		* i - image
+		*/
 		void free_img(img i){
 			free(i.data);
 		}
