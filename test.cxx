@@ -9,8 +9,6 @@
 #include <math.h>
 #include "dbg.h"
 
-#define BGCOLOR 0xFF000000
-
 int main(){
 
 	dbg screen;
@@ -26,14 +24,14 @@ int main(){
 	
 	//draw the image
 	screen.draw_img(bg_img,  ((768/2)-(bg_img.h/2)), ((1376/2)-(bg_img.w/2)));
-
-	//debug print stuff
-	screen.print("Hello From Debug!", 1, 1, RED, NOCOLOR, 0);
-	screen.print("Hello From Debug!", 1, 2, RED, NOCOLOR, 1);
-	screen.print("Hello From Debug!", 1, 3, RED, NOCOLOR, 2);
-	screen.print("Hello From Debug!", 1, 4, RED, NOCOLOR, 3);
-	screen.print("Hello From Debug!", 1, 5, RED, NOCOLOR, 4);
-	screen.print("Hello From Debug!", 1, 6, RED, NOCOLOR, 5);
+	
+        //debug print stuff
+	screen.print("Hello From Debug!", 1, 1, RED, NOCOLOR, DEBUG_FONT_DEBUG);
+	screen.print("Hello From Debug!", 1, 2, RED, NOCOLOR, DEBUG_FONT_ACORN);
+	screen.print("Hello From Debug!", 1, 3, RED, NOCOLOR, DEBUG_FONT_PERL);
+	screen.print("Hello From Debug!", 1, 4, RED, NOCOLOR, DEBUG_FONT_SPARTA);
+	screen.print("Hello From Debug!", 1, 5, RED, NOCOLOR, DEBUG_FONT_LINUX);
+	screen.print("Hello From Debug!", 1, 6, RED, NOCOLOR, DEBUG_FONT_LUCIDIA);
 
 	//cleanup
 	screen.free_img(bg_img);
